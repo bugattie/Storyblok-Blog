@@ -1,0 +1,14 @@
+.post_thumbnail {
+  width: 100%;
+  height: 300px;
+  background-size: cover;
+  background-position: center;
+}
+.post_content {
+  width: 80%;
+  max-width: 500px;
+  margin: auto;
+}
+.post_content p {
+  white-space: pre-line;
+}
