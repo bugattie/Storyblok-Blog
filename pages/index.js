@@ -29,13 +29,11 @@ export async function getStaticProps() {
     props: {
       stories: data.stories.map((story) => ({
         id: story.slug,
+        blok: story.content,
         title: story.content.title,
         previewText: story.content.summary,
         thumbnailUrl: story.content.thumbnail,
       })),
-    },
-    props: {
-      stories: data,
     },
     revalidate: 3600,
   };

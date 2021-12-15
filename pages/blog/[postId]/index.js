@@ -1,13 +1,15 @@
-import Header from "../../components/Header";
-import Storyblok from "../../lib/storyblok";
-import styles from "../../styles/Post.module.css";
+import { sbEditable } from "@storyblok/storyblok-editable";
+
+import Header from "../../../components/Header";
+import Storyblok from "../../../lib/storyblok";
+import styles from "../../../styles/Post.module.css";
 
 function PostDetails(props) {
   return (
     <>
       <Header />
       <div style={{ paddingTop: "3rem" }}>&nbsp;</div>
-      <div id="post">
+      <div id="post" {...sbEditable(props.blok)}>
         <div
           className={styles.post_thumbnail}
           style={{ backgroundImage: `url("${props.thumbnail}")` }}
@@ -56,6 +58,7 @@ export async function getStaticProps(context) {
 
   return {
     props: {
+      blok: data.story.content,
       title: data.story.content.title,
       content: data.story.content.content,
       thumbnail: data.story.content.thumbnail,

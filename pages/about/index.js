@@ -1,5 +1,6 @@
 import Header from "../../components/Header";
 
+import { sbEditable } from "@storyblok/storyblok-editable";
 import Storyblok from "../../lib/storyblok";
 
 function About(props) {
@@ -7,7 +8,7 @@ function About(props) {
     <>
       <Header />
       <div style={{ paddingTop: "3rem" }}>&nbsp;</div>
-      <div style={{ width: 400, margin: "0 auto" }}>
+      <div style={{ width: 400, margin: "0 auto" }} {...sbEditable(props.blok)}>
         <h1>{props.title}</h1>
         <p>{props.content}</p>
       </div>
@@ -28,6 +29,7 @@ export async function getStaticProps() {
 
   return {
     props: {
+      blok: data.story.content,
       title: data.story.content.title,
       content: data.story.content.content,
     },
